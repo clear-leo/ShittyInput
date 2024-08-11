@@ -14,3 +14,5 @@ I don't know how to write docs soooo, use cases:
  - ```shittyinput::string()``` returns a string
  - ```shittyinput::float``` has two cases, one of size ```f32``` and
 another of size ```f64```. To use them do ```shittyinput::float::bit32()``` or ```shittyinput::float::bit64()```
+
+Here's the code in [github](https://github.com/clear-leo/ShittyInput)
