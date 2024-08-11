@@ -41,14 +41,14 @@ pub struct float {
 }
 
 impl float {
-    pub fn bit32() -> f32 {
+    pub fn f32() -> f32 {
         let mut result = String::new();
         io::stdin().read_line(&mut result);
         let result: f32 = result.trim().parse().expect("ERROR: Enter a valid (float 32-bit) number");
         result
     }
 
-    pub fn bit64() -> f64 {
+    pub fn f64() -> f64 {
         let mut result = String::new();
         io::stdin().read_line(&mut result);
         let result: f64 = result.trim().parse().expect("ERROR: Enter a valid (float 64-bit) number");
