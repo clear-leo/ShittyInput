@@ -1,14 +1,8 @@
 This is a very shitty input managing crate, I made it because
 I was tired of writing three or four lines per each input.
 
-The benefits to using this crate:
- - Shorten yo code cuh!!!
- 
-The downsides to using this crate:
- - Unoptimized code
- - May cause errors
- 
- 
+The whole crate was basically just made to "shorten your code cuh!"
+
 I don't know how to write docs soooo, use cases:
  - ```shittyinput::int()``` returns an integer of size ```isize```
  - ```shittyinput::string()``` returns a string
