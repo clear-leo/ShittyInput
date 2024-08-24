@@ -1,6 +1,6 @@
 [package]
 name = "shittyinput"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "An input library for rust"
 license = "MIT OR Apache-2.0"
