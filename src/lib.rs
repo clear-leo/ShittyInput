@@ -1,60 +1,54 @@
-//! This is a very shitty input managing crate, I made it because
+//! This is a *fairly* shitty input managing crate, I made it because
 //! I was tired of writing three or four lines per each input.
 //! 
 //! The whole crate was basically just made to "shorten your code cuh!"
 //! 
-//! I don't know how to write docs soooo, use cases:
-//!  - ```shittyinput::int()``` returns a value of size ```isize```
-//!  - ```shittyinput::string()``` returns a string
-//!  - ```shittyinput::float``` has two cases, one of size ```f32``` and
-//! another of size ```f64```. To use them do ```shittyinput::float::f32()``` or ```shittyinput::float::f64()```
+//! The crate currently contains:
+//! - ```get_int()``` Returns an integer of size ```isize```. Returns a standard ```io::Error``` if it couldn't parse the input.
+//! - ```get_string()``` Returns the inputed String, no need for error handling there.
+//! - ```get_f32()``` Returns a float of type ```f32```. Returns a standard ```io::Error``` if it couldn't parse the input.
+//! - ```get_f64()``` Returns a float of type ```f64```. Returns a standard ```io::Error``` if it couldn't parse the input.
 //! 
-//! All of the functions return a Result with either the intended value or the error.
-//! 
-//! Here's the code in [github](https://github.com/clear-leo/ShittyInput)
+//! 1.0.0 release babyyy!!
 
 
-use std::{io, num::ParseIntError};
+use std::io;
 
-pub fn int() -> Result<isize, ParseIntError> {
+
+/// Returns an ```io::Result<isize>```
+pub fn get_int() -> io::Result<isize> {
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("Error on terminal input (ShittyInput crate!)");
-    let result = match input.trim().parse::<isize>() {
-        Ok(result) => Ok(result),
-        Err(error) => Err(error)
-    };
+    let result = input.trim().parse::<isize>().map_err(|error| {
+        io::Error::new(io::ErrorKind::Other, error)
+    });
     result
 }
 
-pub fn string() -> String {
+/// Returns a ```String```
+pub fn get_string() -> String {
     let mut result = String::new();
     io::stdin().read_line(&mut result).expect("Error on terminal input (ShittyInput crate!)");
     let result = result.trim();
     result.to_string()
 }
 
-pub struct float {
-    
+/// Returns an ```io::Result<f32>```
+pub fn get_f32 () -> io::Result<f32> {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Error on terminal input (ShittyInput crate!)");
+    let result = input.trim().parse::<f32>().map_err(|error| {
+        io::Error::new(io::ErrorKind::Other, error)
+    });
+    result
 }
 
-impl float {
-    pub fn f32() -> Result<f32, std::num::ParseFloatError> {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Error on terminal input (ShittyInput crate!)");
-        let result = match input.trim().parse::<f32>() {
-            Ok(result) => Ok(result),
-            Err(error) => Err(error)
-        };
-        result
-    }
-
-    pub fn f64() -> Result<f64, std::num::ParseFloatError> {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Error on terminal input (ShittyInput crate!)");
-        let result = match input.trim().parse::<f64>() {
-            Ok(result) => Ok(result),
-            Err(error) => Err(error)
-        };
-        result
-    }
+/// Returns an ```io::Result<f64>```
+pub fn get_f64() -> io::Result<f64> {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Error on terminal input (ShittyInput crate!)");
+    let result = input.trim().parse::<f64>().map_err(|error| {
+        io::Error::new(io::ErrorKind::Other, error)
+    });
+    result
 }
